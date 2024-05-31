@@ -1,0 +1,16 @@
+server:
+  port: 8787
+
+spring:
+  application:
+    name: "prueba"
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/prueba"
+    username: "postgres"
+    password: "3809"
+    driverClassName: "org.postgresql.Driver"
+
+  jpa:
+    hibernate:
+      ddl-auto: update

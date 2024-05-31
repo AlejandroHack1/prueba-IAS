@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  postgres14:
+    container_name: postgresql14
+    image: postgres:14-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DATABASE: prueba
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 3809
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - spring
+
+  adminer:
+    image: adminer
+    ports:
+      - "8900:8787"
+    restart: always
+    networks:
+      - spring
+
+  ms-prueba:
+    container_name: ms-prueba
+    image: software1080/prueba
+    ports:
+      - "8787:8787"
+    depends_on:
+      - postgres14
+    restart: always
+    networks:
+      - spring
+
+volumes:
+  data-postgres:
+
+
+networks:
+  spring:
+    name: spring
