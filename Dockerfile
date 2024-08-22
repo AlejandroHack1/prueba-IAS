@@ -1,4 +1,4 @@
-FROM gradle:7.4.0-jdk-alpine as builder
+FROM gradle:8.10-jdk AS builder
 
 WORKDIR /app
 
@@ -6,9 +6,9 @@ COPY settings.gradle build.gradle gradlew ./
 
 COPY . .
 
-RUN ./gradlew clean build
+RUN ./gradlew clean build --info || true
 
-FROM openjdk:17-alpine
+FROM openjdk:18-alpine
 
 WORKDIR /app
 

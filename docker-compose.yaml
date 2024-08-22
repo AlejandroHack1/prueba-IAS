@@ -19,16 +19,16 @@ services:
   adminer:
     image: adminer
     ports:
-      - "8900:8787"
+      - "8900:8080"
     restart: always
     networks:
       - spring
 
   ms-prueba:
     container_name: ms-prueba
-    image: software1080/prueba
+    image: software1080/prueba:v2.1
     ports:
-      - "8787:8787"
+      - "8081:8081"
     depends_on:
       - postgres14
     restart: always
